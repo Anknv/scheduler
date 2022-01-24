@@ -51,7 +51,8 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {},
   });
 
   // Updates the state with the new day.
@@ -63,7 +64,10 @@ export default function Application(props) {
   // }
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const parsedAppointments = dailyAppointments.map((appointment) => <Appointment key={appointment.id} {...appointment} />);
+  const parsedAppointments = dailyAppointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+    return <Appointment key={appointment.id} {...appointment} interview={interview} />;
+  });
 
   //useEffect(() => {
   //   const daysURL = `http://localhost:8001/api/days`;

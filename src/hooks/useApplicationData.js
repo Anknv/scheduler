@@ -56,7 +56,7 @@ export function useApplicationData() {
     })
   }
 
-  const bookInterview = (id, interview) => {
+  const bookInterview = (id, interview, isEdit) => {
     console.log(id, interview);
 
     const appointment = { ...state.appointments[id], interview: { ...interview }};
@@ -66,7 +66,9 @@ export function useApplicationData() {
     return axios.put(`http://localhost:8001/api/appointments/${id}`, { interview }).then(response => {
       console.log({response});
       setState(prev => ({ ...prev, appointments }));
-      updateSpots(id, -1);
+      if (!isEdit) {
+        updateSpots(id, -1);
+      }
     })
   }
 

@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import './styles.scss';
 import Button from "components/Button";
 

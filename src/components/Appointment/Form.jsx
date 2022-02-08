@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import classNames from "classnames";
 import './styles.scss';
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";

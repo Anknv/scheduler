@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import './styles.scss';
 import { useVisualMode } from "hooks/useVisualMode";
 import Header from "components/Appointment/Header";
@@ -58,7 +57,8 @@ export default function Appointment(props) {
       {mode === SAVING && <Status text='Saving' />}
       {mode === DELETING && <Status text='Deleting' />}
       {mode === CONFIRM && <Confirm onConfirm={deleteInterview} onCancel={back} />}
-      {(mode === ERROR_DELETE || mode === ERROR_SAVE) && <Error onClose={back} />}
+      {mode === ERROR_DELETE && <Error action='delete' onClose={back} />}
+      {mode === ERROR_SAVE && <Error action='save' onClose={back} />}
     </article>
   )
 }
